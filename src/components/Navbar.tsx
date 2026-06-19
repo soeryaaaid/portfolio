@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { FloatingNav } from './ui/floating-navbar';
 import { User, Briefcase, Code, Mail } from 'lucide-react';
