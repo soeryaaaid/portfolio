@@ -51,7 +51,7 @@ describe('ProjectGrid Component', () => {
     // Since HoverEffect is mocked, let's verify if the custom wrapper in ProjectGrid renders extra elements
     // like images and tags that are built on top of or alongside HoverEffect.
     mockProjects.forEach((project) => {
-      expect(screen.getByText(project.title)).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: project.title, level: 3 })).toBeInTheDocument();
       // Check if project tags are rendered
       project.tags.forEach((tag) => {
         expect(screen.getByText(tag)).toBeInTheDocument();

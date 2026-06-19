@@ -46,8 +46,8 @@ describe('ExperienceTabs Component', () => {
     expect(screen.getByTestId('tabs-container')).toBeInTheDocument();
     
     // Check if company names are displayed as tab buttons
-    expect(screen.getByText('Company A')).toBeInTheDocument();
-    expect(screen.getByText('Company B')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Company A' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Company B' })).toBeInTheDocument();
   });
 
   it('should render detailed experience information for the active company', () => {
