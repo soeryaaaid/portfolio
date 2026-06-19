@@ -21,7 +21,8 @@ const mockData: PortfolioData = {
 };
 
 // Mock Spotlight because it contains inline SVG animation
-vi.mock('./ui/spotlight', () => ({
+vi.mock('@/components/ui/spotlight', () => ({
+  __esModule: true,
   Spotlight: () => <div data-testid="spotlight" />,
 }));
 
@@ -30,7 +31,7 @@ describe('Hero Component', () => {
     render(<Hero data={mockData} />);
 
     expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
-    expect(screen.getByText(/Full-Stack Software Engineer/i)).toBeInTheDocument();
+    expect(screen.getByText(/Specialized in React/i)).toBeInTheDocument();
     expect(screen.getByText(/I am a passionate/i)).toBeInTheDocument();
   });
 

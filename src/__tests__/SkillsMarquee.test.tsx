@@ -4,7 +4,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { SkillsMarquee } from '../components/SkillsMarquee';
 
 // Mock InfiniteMovingCards because it clones DOM elements which is complex in JSDOM
-vi.mock('./ui/infinite-moving-cards', () => ({
+vi.mock('../components/ui/infinite-moving-cards', () => ({
   InfiniteMovingCards: ({ items }: { items: { quote: string; name: string; title: string }[] }) => (
     <div data-testid="infinite-moving-cards">
       {items.map((item) => (
