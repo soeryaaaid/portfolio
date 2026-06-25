@@ -9,6 +9,11 @@ vi.mock('motion/react', async () => {
   return {
     ...actual,
     useScroll: () => ({
+      scrollY: {
+        get: () => 0,
+        getPrevious: () => 0,
+        onChange: () => () => {},
+      },
       scrollYProgress: {
         get: () => 0,
         getPrevious: () => 0,
