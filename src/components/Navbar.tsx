@@ -9,6 +9,7 @@ import {
   MobileNavToggle,
   NavbarButton,
 } from './ui/resizable-navbar';
+import { ModeToggle } from './ui/mode-toggle';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,8 +50,10 @@ export const Navbar = () => {
             <NavItems items={navItems} />
           </div>
 
-          {/* CTA Contact Button */}
+          {/* Theme Toggle & CTA Contact Button */}
           <div className="flex items-center gap-3">
+            <ModeToggle />
+
             <NavbarButton
               as="button"
               variant="primary"
@@ -75,6 +78,7 @@ export const Navbar = () => {
               <span className="tracking-tight">John Doe</span>
             </a>
             <div className="flex items-center gap-3">
+              <ModeToggle />
               <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
             </div>
           </MobileNavHeader>
