@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useSyncExternalStore } from 'react';
 import { flushSync } from 'react-dom';
 import { useTheme } from 'next-themes';
 import { motion } from 'motion/react';
@@ -17,10 +17,7 @@ export type TransitionVariant =
   | 'star';
 
 function polygonCollapsed(cx: number, cy: number, vertexCount: number): string {
-  const pairs = Array.from(
-    { length: vertexCount },
-    () => `${cx}px ${cy}px`
-  ).join(', ');
+  const pairs = Array.from({ length: vertexCount }, () => `${cx}px ${cy}px`).join(', ');
   return `polygon(${pairs})`;
 }
 
@@ -30,14 +27,11 @@ function getThemeTransitionClipPaths(
   cy: number,
   maxRadius: number,
   viewportWidth: number,
-  viewportHeight: number
+  viewportHeight: number,
 ): [string, string] {
   switch (variant) {
     case 'circle':
-      return [
-        `circle(0px at ${cx}px ${cy}px)`,
-        `circle(${maxRadius}px at ${cx}px ${cy}px)`,
-      ];
+      return [`circle(0px at ${cx}px ${cy}px)`, `circle(${maxRadius}px at ${cx}px ${cy}px)`];
     case 'square': {
       const halfW = Math.max(cx, viewportWidth - cx);
       const halfH = Math.max(cy, viewportHeight - cy);
@@ -97,12 +91,10 @@ function getThemeTransitionClipPaths(
         const verts: string[] = [];
         for (let i = 0; i < 5; i++) {
           const outerA = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
-          verts.push(
-            `${cx + radius * Math.cos(outerA)}px ${cy + radius * Math.sin(outerA)}px`
-          );
+          verts.push(`${cx + radius * Math.cos(outerA)}px ${cy + radius * Math.sin(outerA)}px`);
           const innerA = outerA + Math.PI / 5;
           verts.push(
-            `${cx + radius * innerRatio * Math.cos(innerA)}px ${cy + radius * innerRatio * Math.sin(innerA)}px`
+            `${cx + radius * innerRatio * Math.cos(innerA)}px ${cy + radius * innerRatio * Math.sin(innerA)}px`,
           );
         }
         return `polygon(${verts.join(', ')})`;
@@ -111,10 +103,7 @@ function getThemeTransitionClipPaths(
       return [starPolygon(startR), starPolygon(R)];
     }
     default:
-      return [
-        `circle(0px at ${cx}px ${cy}px)`,
-        `circle(${maxRadius}px at ${cx}px ${cy}px)`,
-      ];
+      return [`circle(0px at ${cx}px ${cy}px)`, `circle(${maxRadius}px at ${cx}px ${cy}px)`];
   }
 }
 
@@ -125,6 +114,10 @@ interface ModeToggleProps {
   fromCenter?: boolean;
 }
 
+const subscribe = () => () => {};
+const getSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export function ModeToggle({
   className,
   duration = 400,
@@ -132,13 +125,8 @@ export function ModeToggle({
   fromCenter = false,
 }: ModeToggleProps) {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  // Prevent hydration mismatch by waiting for the client-side mount
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const toggleTheme = useCallback(() => {
     if (!mounted) return;
@@ -163,10 +151,7 @@ export function ModeToggle({
       y = top + height / 2;
     }
 
-    const maxRadius = Math.hypot(
-      Math.max(x, viewportWidth - x),
-      Math.max(y, viewportHeight - y)
-    );
+    const maxRadius = Math.hypot(Math.max(x, viewportWidth - x), Math.max(y, viewportHeight - y));
 
     const applyTheme = () => {
       // Toggle class synchronously so the View Transitions API
@@ -186,15 +171,12 @@ export function ModeToggle({
       y,
       maxRadius,
       viewportWidth,
-      viewportHeight
+      viewportHeight,
     );
 
     const root = document.documentElement;
     root.dataset.magicuiThemeVt = 'active';
-    root.style.setProperty(
-      '--magicui-theme-toggle-vt-duration',
-      `${duration}ms`
-    );
+    root.style.setProperty('--magicui-theme-toggle-vt-duration', `${duration}ms`);
     root.style.setProperty('--magicui-theme-vt-clip-from', clipPath[0]);
 
     const cleanup = () => {
@@ -225,7 +207,7 @@ export function ModeToggle({
             easing: variant === 'star' ? 'linear' : 'ease-in-out',
             fill: 'forwards',
             pseudoElement: '::view-transition-new(root)',
-          }
+          },
         );
       });
     }
@@ -246,7 +228,7 @@ export function ModeToggle({
       onClick={toggleTheme}
       className={cn(
         'rounded-full border-none shadow-none bg-transparent text-neutral-900 dark:text-white cursor-pointer transition-colors',
-        className
+        className,
       )}
       aria-label="Toggle Theme"
     >
