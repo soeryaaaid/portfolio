@@ -7,11 +7,11 @@ function getTheSvgUrl(skillName: string): string {
     'node.js': 'nodedotjs',
     'express.js': 'expressdotjs',
     'tailwind css': 'tailwind-css',
-    'javascript': 'javascript',
-    'typescript': 'typescript',
-    'react': 'react',
-    'git': 'git',
-    'github': 'github',
+    javascript: 'javascript',
+    typescript: 'typescript',
+    react: 'react',
+    git: 'git',
+    github: 'github',
   };
   const normalized = skillName.toLowerCase().trim();
   const slug = mapping[normalized] || normalized.replace(/[^a-z0-9]/g, '');
@@ -20,13 +20,13 @@ function getTheSvgUrl(skillName: string): string {
 
 export const SkillsMarquee = ({
   skills,
-  direction = "left",
-  speed = "fast",
+  direction = 'left',
+  speed = 'fast',
   pauseOnHover = true,
 }: {
   skills: string[];
-  direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
+  direction?: 'left' | 'right';
+  speed?: 'fast' | 'normal' | 'slow';
   pauseOnHover?: boolean;
 }) => {
   // Map skills to Logo Clouds format
@@ -51,9 +51,9 @@ export const SkillsMarquee = ({
       <div className="w-full flex justify-center items-center max-w-7xl mx-auto px-4 md:px-8">
         <InfiniteMovingCards
           items={marqueeItems}
-          direction="left"
-          speed="normal"
-          pauseOnHover={true}
+          direction={direction}
+          speed={speed}
+          pauseOnHover={pauseOnHover}
           className="max-w-full"
         />
       </div>

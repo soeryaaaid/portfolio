@@ -27,7 +27,7 @@ vi.mock('motion/react', async () => {
 describe('Navbar Component', () => {
   it('should render navigation links', () => {
     render(<Navbar />);
-    
+
     // Check if navigation links are rendered
     const aboutLink = screen.getByRole('link', { name: /about/i });
     const experienceLink = screen.getByRole('link', { name: /experience/i });

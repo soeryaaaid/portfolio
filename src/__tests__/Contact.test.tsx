@@ -13,7 +13,7 @@ const mockContact: ContactData = {
 describe('Contact Component', () => {
   it('should render contact information and links', () => {
     render(<Contact contact={mockContact} />);
-    
+
     // Check if titles and text are rendered
     expect(screen.getByText(/get in touch/i)).toBeInTheDocument();
     expect(screen.getByText(/johndoe@example.com/i)).toBeInTheDocument();

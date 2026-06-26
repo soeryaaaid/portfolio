@@ -14,15 +14,17 @@ export const ProjectGrid = ({ projects }: { projects: ProjectItem[] }) => {
   }));
 
   return (
-    <div id="projects" className="py-20 bg-neutral-50 dark:bg-neutral-950 text-neutral-950 dark:text-white px-4 md:px-8 border-t border-neutral-200 dark:border-neutral-900">
+    <div
+      id="projects"
+      className="py-20 bg-neutral-50 dark:bg-neutral-950 text-neutral-950 dark:text-white px-4 md:px-8 border-t border-neutral-200 dark:border-neutral-900"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Featured Projects
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Featured Projects</h2>
           <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto text-sm md:text-base">
-            A showcase of my recent work, highlighting design aesthetics, performance, and functional architecture.
+            A showcase of my recent work, highlighting design aesthetics, performance, and
+            functional architecture.
           </p>
         </div>
 

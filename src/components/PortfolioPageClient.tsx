@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
@@ -36,7 +36,7 @@ export default function PortfolioPageClient({ data }: PortfolioPageClientProps) 
           distortionStrength={4}
           distortionRadius={150}
           distortionMode="repel"
-          followSpeed={0.10}
+          followSpeed={0.1}
           sampleAverage={true}
           tintColor="#6366f1"
           tintStrength={0.15}

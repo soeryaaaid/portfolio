@@ -35,7 +35,10 @@ export const ExperienceTabs = ({ experience }: { experience: ExperienceItem[] })
 
         <ul className="space-y-3">
           {item.description.map((desc, idx) => (
-            <li key={idx} className="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 text-sm md:text-base leading-relaxed">
+            <li
+              key={idx}
+              className="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 text-sm md:text-base leading-relaxed"
+            >
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
               <span>{desc}</span>
             </li>
@@ -46,12 +49,13 @@ export const ExperienceTabs = ({ experience }: { experience: ExperienceItem[] })
   }));
 
   return (
-    <div id="experience" className="py-20 bg-white dark:bg-black text-neutral-900 dark:text-white px-4 md:px-8">
+    <div
+      id="experience"
+      className="py-20 bg-white dark:bg-black text-neutral-900 dark:text-white px-4 md:px-8"
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center md:text-left mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
-            Work Experience
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Work Experience</h2>
           <p className="text-neutral-600 dark:text-neutral-400">
             A history of my professional roles and internships.
           </p>

@@ -42,9 +42,9 @@ vi.mock('../components/ui/tabs', () => ({
 describe('ExperienceTabs Component', () => {
   it('should render the tabs layout with experience items', () => {
     render(<ExperienceTabs experience={mockExperience} />);
-    
+
     expect(screen.getByTestId('tabs-container')).toBeInTheDocument();
-    
+
     // Check if company names are displayed as tab buttons
     expect(screen.getByRole('button', { name: 'Company A' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Company B' })).toBeInTheDocument();

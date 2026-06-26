@@ -22,7 +22,11 @@ const mockData: PortfolioData = {
 
 // Mock components to simplify rendering in integration test
 vi.mock('../components/Navbar', () => ({
-  Navbar: (props: any) => <div data-testid="mock-navbar">Navbar - darkness: {props.darkness} - blur: {props.blur}</div>,
+  Navbar: (props: any) => (
+    <div data-testid="mock-navbar">
+      Navbar - darkness: {props.darkness} - blur: {props.blur}
+    </div>
+  ),
 }));
 
 vi.mock('../components/Hero', () => ({

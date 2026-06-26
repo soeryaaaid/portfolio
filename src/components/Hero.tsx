@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
@@ -13,7 +13,7 @@ interface HeroProps {
   height?: number;
   cellSize?: number;
   dotScale?: number;
-  shape?: "circle" | "square";
+  shape?: 'circle' | 'square';
   backgroundColor?: string;
   grayscale?: boolean;
   responsive?: boolean;
@@ -21,13 +21,13 @@ interface HeroProps {
   interactive?: boolean;
   distortionStrength?: number;
   distortionRadius?: number;
-  distortionMode?: "repel" | "attract" | "swirl";
+  distortionMode?: 'repel' | 'attract' | 'swirl';
   followSpeed?: number;
   sampleAverage?: boolean;
   tintColor?: string;
   tintStrength?: number;
   maxFps?: number;
-  objectFit?: "cover" | "contain" | "fill" | "none";
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none';
   jitterStrength?: number;
   jitterSpeed?: number;
   fadeOnLeave?: boolean;
@@ -37,7 +37,7 @@ interface HeroProps {
   glowInactiveZone?: number;
   glowProximity?: number;
   glowSpread?: number;
-  glowVariant?: "default" | "white";
+  glowVariant?: 'default' | 'white';
   glowGlow?: boolean;
   glowDisabled?: boolean;
   glowMovementDuration?: number;
@@ -51,21 +51,21 @@ export const Hero = ({
   height = 380,
   cellSize = 5,
   dotScale = 0.85,
-  shape = "square",
-  backgroundColor = "#000000",
+  shape = 'square',
+  backgroundColor = '#000000',
   grayscale = false,
   responsive = false,
   dropoutStrength = 0,
   interactive = true,
   distortionStrength = 4,
   distortionRadius = 150,
-  distortionMode = "repel",
+  distortionMode = 'repel',
   followSpeed = 0.1,
   sampleAverage = true,
-  tintColor = "#6366f1",
+  tintColor = '#6366f1',
   tintStrength = 0.15,
   maxFps = 60,
-  objectFit = "cover",
+  objectFit = 'cover',
   jitterStrength = 10,
   jitterSpeed = 2,
   fadeOnLeave = true,
@@ -75,7 +75,7 @@ export const Hero = ({
   glowInactiveZone = 0.7,
   glowProximity = 150,
   glowSpread = 30,
-  glowVariant = "default",
+  glowVariant = 'default',
   glowGlow = false,
   glowDisabled = false, // Enable interactive border glow by default
   glowMovementDuration = 2,
@@ -84,15 +84,16 @@ export const Hero = ({
   const { name, headline, about, contact } = data;
 
   // Premium developer stock portrait from Unsplash
-  const avatarSrc = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80";
+  const avatarSrc =
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80';
 
   return (
-    <section id="about" className="relative min-h-screen bg-white dark:bg-black text-neutral-950 dark:text-white w-full">
-      <HeroHighlight
-        containerClassName="min-h-screen w-full py-20 px-4 md:px-8 flex items-center justify-center bg-white dark:bg-black"
-      >
+    <section
+      id="about"
+      className="relative min-h-screen bg-white dark:bg-black text-neutral-950 dark:text-white w-full"
+    >
+      <HeroHighlight containerClassName="min-h-screen w-full py-20 px-4 md:px-8 flex items-center justify-center bg-white dark:bg-black">
         <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
           {/* Left Column: Introduction & Texts */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left relative z-20">
             {/* Professional Badge */}
@@ -111,8 +112,7 @@ export const Hero = ({
 
             {/* Headline with animated highlighting */}
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-800 dark:text-neutral-200 mb-6 leading-snug">
-              Specialized in{' '}
-              <br />
+              Specialized in <br />
               <Highlight className="text-black dark:text-white">
                 {headline.split('|')[0].trim()}
               </Highlight>
@@ -217,7 +217,6 @@ export const Hero = ({
               </div>
             </div>
           </div>
-
         </div>
       </HeroHighlight>
     </section>

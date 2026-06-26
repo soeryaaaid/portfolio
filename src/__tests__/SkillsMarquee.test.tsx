@@ -22,7 +22,7 @@ describe('SkillsMarquee Component', () => {
     render(<SkillsMarquee skills={mockSkills} />);
 
     expect(screen.getByTestId('infinite-moving-cards')).toBeInTheDocument();
-    
+
     // Check if skills are displayed
     mockSkills.forEach((skill) => {
       expect(screen.getByText(skill)).toBeInTheDocument();

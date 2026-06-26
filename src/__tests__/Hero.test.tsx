@@ -8,7 +8,8 @@ const mockData: PortfolioData = {
   name: 'John Doe',
   nickname: 'John',
   headline: 'Full-Stack Software Engineer | Specialized in React & Node.js',
-  about: 'I am a passionate Full-Stack Software Engineer with experience in building web applications.',
+  about:
+    'I am a passionate Full-Stack Software Engineer with experience in building web applications.',
   skills: ['React', 'TypeScript', 'Node.js'],
   experience: [],
   projects: [],
@@ -23,8 +24,12 @@ const mockData: PortfolioData = {
 // Mock HeroHighlight and Highlight because they contain custom motion animations
 vi.mock('@/components/ui/hero-highlight', () => ({
   __esModule: true,
-  HeroHighlight: ({ children }: { children: React.ReactNode }) => <div data-testid="hero-highlight">{children}</div>,
-  Highlight: ({ children }: { children: React.ReactNode }) => <span data-testid="highlight">{children}</span>,
+  HeroHighlight: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="hero-highlight">{children}</div>
+  ),
+  Highlight: ({ children }: { children: React.ReactNode }) => (
+    <span data-testid="highlight">{children}</span>
+  ),
 }));
 
 // Mock PixelatedCanvas because it performs dynamic Canvas drawings
@@ -50,7 +55,7 @@ describe('Hero Component', () => {
 
   it('should render social link buttons or avatars', () => {
     render(<Hero data={mockData} />);
-    
+
     // Check for social links in Hero
     const githubLink = screen.getByRole('link', { name: /github/i });
     const linkedinLink = screen.getByRole('link', { name: /linkedin/i });
@@ -61,7 +66,13 @@ describe('Hero Component', () => {
     expect(emailLink).toBeInTheDocument();
 
     expect(githubLink).toHaveAttribute('href', expect.stringContaining('github.com/johndoe'));
-    expect(linkedinLink).toHaveAttribute('href', expect.stringContaining('linkedin.com/in/johndoe'));
-    expect(emailLink).toHaveAttribute('href', expect.stringContaining('mailto:johndoe@example.com'));
+    expect(linkedinLink).toHaveAttribute(
+      'href',
+      expect.stringContaining('linkedin.com/in/johndoe'),
+    );
+    expect(emailLink).toHaveAttribute(
+      'href',
+      expect.stringContaining('mailto:johndoe@example.com'),
+    );
   });
 });

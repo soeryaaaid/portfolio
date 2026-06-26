@@ -65,7 +65,10 @@ export const Navbar = () => {
         {/* Mobile Navigation Bar */}
         <MobileNav className="px-4 py-3 mt-2">
           <MobileNavHeader>
-            <a href="#" className="flex items-center gap-2 text-sm font-bold text-neutral-900 dark:text-white">
+            <a
+              href="#"
+              className="flex items-center gap-2 text-sm font-bold text-neutral-900 dark:text-white"
+            >
               <span className="h-8 w-8 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 flex items-center justify-center text-black font-extrabold text-xs">
                 JD
               </span>

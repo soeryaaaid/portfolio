@@ -41,7 +41,7 @@ vi.mock('../components/ui/card-hover-effect', () => ({
 describe('ProjectGrid Component', () => {
   it('should render the projects layout grid', () => {
     render(<ProjectGrid projects={mockProjects} />);
-    
+
     expect(screen.getByTestId('hover-effect')).toBeInTheDocument();
   });
 

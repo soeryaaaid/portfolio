@@ -5,7 +5,10 @@ export const Contact = ({ contact }: { contact: ContactData }) => {
   const { email, linkedin, github } = contact;
 
   return (
-    <footer id="contact" className="relative py-24 bg-white dark:bg-black text-neutral-950 dark:text-white px-4 md:px-8 overflow-hidden border-t border-neutral-200 dark:border-neutral-900">
+    <footer
+      id="contact"
+      className="relative py-24 bg-white dark:bg-black text-neutral-950 dark:text-white px-4 md:px-8 overflow-hidden border-t border-neutral-200 dark:border-neutral-900"
+    >
       {/* Background radial gradient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -13,13 +16,14 @@ export const Contact = ({ contact }: { contact: ContactData }) => {
         <span className="text-xs font-bold tracking-widest text-indigo-400 uppercase mb-3 block">
           Let&apos;s Connect
         </span>
-        
+
         <h2 className="text-3xl md:text-6xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-white">
           Get in Touch
         </h2>
-        
+
         <p className="text-neutral-600 dark:text-neutral-500 max-w-xl mx-auto text-sm md:text-lg mb-10 leading-relaxed">
-          I am always open to discussing new opportunities, open-source projects, or learning achievements. Drop me a line!
+          I am always open to discussing new opportunities, open-source projects, or learning
+          achievements. Drop me a line!
         </p>
 
         {/* Major Contact Link Button using Gmail from theSVG */}
@@ -77,7 +81,8 @@ export const Contact = ({ contact }: { contact: ContactData }) => {
         </div>
 
         <p className="text-xs text-neutral-600 mt-16">
-          © {new Date().getFullYear()} John Doe. Built with Next.js & Aceternity UI. All rights reserved.
+          © {new Date().getFullYear()} John Doe. Built with Next.js & Aceternity UI. All rights
+          reserved.
         </p>
       </div>
     </footer>
