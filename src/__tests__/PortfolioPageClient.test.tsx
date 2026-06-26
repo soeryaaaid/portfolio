@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import PortfolioPageClient from '../components/PortfolioPageClient';
 import { PortfolioData } from '@/utils/getPortfolioData';
@@ -22,19 +22,11 @@ const mockData: PortfolioData = {
 
 // Mock components to simplify rendering in integration test
 vi.mock('../components/Navbar', () => ({
-  Navbar: (props: any) => (
-    <div data-testid="mock-navbar">
-      Navbar - darkness: {props.darkness} - blur: {props.blur}
-    </div>
-  ),
+  Navbar: () => <div data-testid="mock-navbar">Navbar</div>,
 }));
 
 vi.mock('../components/Hero', () => ({
-  Hero: (props: any) => (
-    <div data-testid="mock-hero">
-      Hero - cellSize: {props.cellSize} - glowBlur: {props.glowBlur}
-    </div>
-  ),
+  Hero: () => <div data-testid="mock-hero">Hero</div>,
 }));
 
 vi.mock('../components/SkillsMarquee', () => ({
